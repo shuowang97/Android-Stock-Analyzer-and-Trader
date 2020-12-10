@@ -8,15 +8,15 @@ For the home screen, it include Portfolio section and Favorite section, the stoc
 
 
 
-![image-20201209202220551](C:\Users\ShuoW\AppData\Roaming\Typora\typora-user-images\image-20201209202220551.png)
+![image-20201209202220551](https://github.com/shuowang97/Android-Stock-Analyzer-and-Trader/blob/main/img-github/image-20201209202220551.png)
 
 
 
-![image-20201209202405666](C:\Users\ShuoW\AppData\Roaming\Typora\typora-user-images\image-20201209202405666.png)
+![image-20201209202405666](https://github.com/shuowang97/Android-Stock-Analyzer-and-Trader/blob/main/img-github/image-20201209202405666.png)
 
 
 
-![image-20201209202420233](C:\Users\ShuoW\AppData\Roaming\Typora\typora-user-images\image-20201209202420233.png)
+![image-20201209202420233](https://github.com/shuowang97/Android-Stock-Analyzer-and-Trader/blob/main/img-github/image-20201209202420233.png)
 
 
 
@@ -24,15 +24,15 @@ For the details screen, you can see a chart supported by HighCharts API, which s
 
 
 
-![image-20201209202449207](C:\Users\ShuoW\AppData\Roaming\Typora\typora-user-images\image-20201209202449207.png)
+![image-20201209202449207](https://github.com/shuowang97/Android-Stock-Analyzer-and-Trader/blob/main/img-github/image-20201209202449207.png)
 
 
 
-![image-20201209202944819](C:\Users\ShuoW\AppData\Roaming\Typora\typora-user-images\image-20201209202944819.png)
+![image-20201209202944819](https://github.com/shuowang97/Android-Stock-Analyzer-and-Trader/blob/main/img-github/image-20201209202944819.png)
 
 
 
-![image-20201209202605533](C:\Users\ShuoW\AppData\Roaming\Typora\typora-user-images\image-20201209202605533.png)
+![image-20201209202605533](https://github.com/shuowang97/Android-Stock-Analyzer-and-Trader/blob/main/img-github/image-20201209202605533.png)
 
 
 
