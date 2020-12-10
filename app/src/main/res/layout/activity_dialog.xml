@@ -22,6 +22,7 @@
             android:layout_height="200dp"/>
 
         <TextView
+            android:id="@+id/popup_title"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center"
             android:textStyle="bold"

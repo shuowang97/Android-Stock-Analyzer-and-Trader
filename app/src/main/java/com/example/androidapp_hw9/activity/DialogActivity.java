@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.androidapp_hw9.R;
 import com.example.androidapp_hw9.entity.NewsEntity;
@@ -18,6 +19,7 @@ public class DialogActivity extends Activity {
     private ImageView mDialogChrome;
     private NewsEntity newsEntity;
     private ImageView mDialogTwitter;
+    private TextView mPopupTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class DialogActivity extends Activity {
                 startActivity(openTwitter);
             }
         });
+
+        mPopupTitle.setText(newsEntity.getTitle());
     }
 
     private void initView() {
@@ -64,5 +68,6 @@ public class DialogActivity extends Activity {
                 .centerCrop()
                 .into(mDialogImg);
 
+        mPopupTitle = findViewById(R.id.popup_title);
     }
 }
