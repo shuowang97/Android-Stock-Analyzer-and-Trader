@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Chart</title>
+</head>
+
+<body>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/data.js"></script>
+<script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+<script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+
+<script type="text/javascript">
+function createH1Element(text)
+{
+    var h = document.createElement("H1");
+    var t = document.createTextNode(text);
+    h.appendChild(t);
+    document.body.appendChild(h);
+}
+
+
+</script>
+
+<div id="container" style="height: 500px; min-width: 310px"></div></body>
+</html>

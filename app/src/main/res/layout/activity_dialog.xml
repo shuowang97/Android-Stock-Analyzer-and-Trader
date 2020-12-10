@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".activity.DialogActivity">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/dialog_img"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="23dp"
+            android:textColor="@color/black"
+            android:text="Winterize Your Car for Safe and Repair-Free Winter Driving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="@drawable/image_border_purple_left"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/dialog_twitter"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/bluetwitter"
+                    android:layout_width="32dp"
+                    android:layout_height="28dp">
+
+                </ImageView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:background="@drawable/image_border_purple_right"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/dialog_chrome"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/ic_chrome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
