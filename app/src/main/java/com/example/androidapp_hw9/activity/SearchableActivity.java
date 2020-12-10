@@ -232,7 +232,7 @@ public class SearchableActivity extends AppCompatActivity {
                 String networthString = sharedPreferences.getString(BaseData.NETWORTH, "");
                 networth = Double.parseDouble(networthString);
 
-                mRemainAmount.setText("$" + networthString + " available to buy MSFT");
+                mRemainAmount.setText("$" + networthString + " available to buy " + lastPriceEntity.getTicker());
 
                 showCustomizeDialog();
             }
