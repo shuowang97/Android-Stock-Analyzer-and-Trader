@@ -16,10 +16,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidapp_hw9.R;
 import com.example.androidapp_hw9.activity.SearchableActivity;
+import com.example.androidapp_hw9.entity.FavoriteStoreEntity;
 import com.example.androidapp_hw9.entity.LocalStockEntity;
+import com.example.androidapp_hw9.entity.LocalStoreEntity;
 import com.example.androidapp_hw9.util.BaseData;
+import com.example.androidapp_hw9.util.GsonParser;
 import com.example.androidapp_hw9.util.ItemMoveCallback;
+import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,99 +44,99 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     private LinearLayout mItemLayout;
-//    private ArrayList<FavoriteStoreEntity> favoriteStoreEntityList;
-//    private List<LocalStoreEntity> localStoreEntityList;
-//    private Gson gson;
+    private ArrayList<FavoriteStoreEntity> favoriteStoreEntityList;
+    private List<LocalStoreEntity> localStoreEntityList;
+    private Gson gson;
 
 
     public MyAdapter(Context context, List<LocalStockEntity> data, boolean favorite) {
         this.favorite = favorite;
         this.mData = data;
         this.context = context;
-//        gson = new Gson();
+        gson = new Gson();
         sharedPreferences = context.getSharedPreferences(BaseData.LOCAL_STORAGE, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-//        favoriteStoreEntityList = new ArrayList<>();
-//        localStoreEntityList = new ArrayList<>();
+        favoriteStoreEntityList = new ArrayList<>();
+        localStoreEntityList = new ArrayList<>();
     }
 
     public void updateData(List<LocalStockEntity> data) {
         this.mData = data;
-        //notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     @Override
     public void onRowMoved(int fromPosition, int toPosition) {
 
-//        if (favorite && favoriteStoreEntityList.size() == 0) {
-//            getFavoriteList();
-//        } else if (!favorite && localStoreEntityList.size() == 0) {
-//            getLocalList();
-//        }
+        if (favorite && favoriteStoreEntityList.size() == 0) {
+            getFavoriteList();
+        } else if (!favorite && localStoreEntityList.size() == 0) {
+            getLocalList();
+        }
 
         if (fromPosition < toPosition) {
             for (int i = fromPosition; i < toPosition; i++) {
                 Collections.swap(mData, i, i + 1);
-//                if (favorite) {
-//                    Collections.swap(favoriteStoreEntityList, i, i + 1);
-//                } else {
-//                    Collections.swap(localStoreEntityList, i, i + 1);
-//                }
+                if (favorite) {
+                    Collections.swap(favoriteStoreEntityList, i, i + 1);
+                } else {
+                    Collections.swap(localStoreEntityList, i, i + 1);
+                }
             }
         } else {
             for (int i = fromPosition; i > toPosition; i--) {
                 Collections.swap(mData, i, i - 1);
-//                if (favorite) {
-//                    Collections.swap(favoriteStoreEntityList, i, i - 1);
-//                } else {
-//                    Collections.swap(localStoreEntityList, i, i - 1);
-//                }
+                if (favorite) {
+                    Collections.swap(favoriteStoreEntityList, i, i - 1);
+                } else {
+                    Collections.swap(localStoreEntityList, i, i - 1);
+                }
             }
         }
 
-//        String res;
-//        if (favorite) {
-//            res = gson.toJson(favoriteStoreEntityList);
-//            Log.d("cccc", res + " in favorite");
-//            editor.putString(BaseData.FAVORITE_STOCK_LIST, res);
-//        } else {
-//            res = gson.toJson(localStoreEntityList);
-//            Log.d("cccc", res + " in local");
-//            editor.putString(BaseData.LOCAL_STOCK_LIST, res);
-//        }
-//        editor.apply();
+        String res;
+        if (favorite) {
+            res = gson.toJson(favoriteStoreEntityList);
+            Log.d("cccc", res + " in favorite");
+            editor.putString(BaseData.FAVORITE_STOCK_LIST, res);
+        } else {
+            res = gson.toJson(localStoreEntityList);
+            Log.d("cccc", res + " in local");
+            editor.putString(BaseData.LOCAL_STOCK_LIST, res);
+        }
+        editor.apply();
 
 
         notifyItemMoved(fromPosition, toPosition);
     }
 
-//    private void getLocalList() {
-//        localStoreEntityList = new ArrayList<>();
-//        String favorites = sharedPreferences.getString(BaseData.LOCAL_STOCK_LIST, "");
-//
-//        JSONArray jsonArray = null;
-//        try {
-//            jsonArray = new JSONArray(favorites);
-//            GsonParser.parseNoHeaderJSONArray(localStoreEntityList, jsonArray, LocalStoreEntity.class);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private void getLocalList() {
+        localStoreEntityList = new ArrayList<>();
+        String favorites = sharedPreferences.getString(BaseData.LOCAL_STOCK_LIST, "");
 
-//    private void getFavoriteList() {
-//        favoriteStoreEntityList = new ArrayList<>();
-//
-//        String favorites = sharedPreferences.getString(BaseData.FAVORITE_STOCK_LIST, "");
-//
-//        JSONArray jsonArray = null;
-//        try {
-//            jsonArray = new JSONArray(favorites);
-//            GsonParser.parseNoHeaderJSONArray(favoriteStoreEntityList, jsonArray, FavoriteStoreEntity.class);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
+        JSONArray jsonArray = null;
+        try {
+            jsonArray = new JSONArray(favorites);
+            GsonParser.parseNoHeaderJSONArray(localStoreEntityList, jsonArray, LocalStoreEntity.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getFavoriteList() {
+        favoriteStoreEntityList = new ArrayList<>();
+
+        String favorites = sharedPreferences.getString(BaseData.FAVORITE_STOCK_LIST, "");
+
+        JSONArray jsonArray = null;
+        try {
+            jsonArray = new JSONArray(favorites);
+            GsonParser.parseNoHeaderJSONArray(favoriteStoreEntityList, jsonArray, FavoriteStoreEntity.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @Override
     public void onRowSelected(ViewHolder myViewHolder) {

@@ -83,13 +83,12 @@ public class MainActivity extends AppCompatActivity {
     private int numInLocal = 0;
 
 
-
     DecimalFormat df = new DecimalFormat("0.00");
     private MyAdapter recyclerViewAdapter_favorite;
     private MyAdapter recyclerViewAdapter_portfolio;
     private RecyclerView.LayoutManager mLayoutManager_favorite;
     private RecyclerView.LayoutManager mLayoutManager_portfolio;
-    private Gson gson;
+    private Gson gson = new Gson();
 
     private RecyclerView mRcFavorite;
 //    private LinearLayout mLinearLayoutFavorite;
@@ -122,9 +121,14 @@ public class MainActivity extends AppCompatActivity {
         localFragmentList = new ArrayList<>();
         recyclerViewAdapter_portfolio = new MyAdapter(getApplicationContext(), localFragmentList, false);
 
+
         refreshing();
         initView();
         setView();
+
+        // the callback can only bind once!! --> Lead to errors previously
+        enableSwipeToDeleteAndUndoForFavorite();
+        enableDragAndDropForPortfolio();
     }
 
     private void refreshing() {
@@ -257,8 +261,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("finish", "on start");
-
+        Log.d("aaaa", "on start");
     }
 
     @Override
@@ -274,10 +277,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         mProgressBar.setVisibility(View.VISIBLE);
-        if(mScrollBar.getVisibility() == View.VISIBLE) {
+        if (mScrollBar.getVisibility() == View.VISIBLE) {
             mScrollBar.setVisibility(View.GONE);
         }
-        if(mMainFooter.getVisibility() == View.VISIBLE) {
+        if (mMainFooter.getVisibility() == View.VISIBLE) {
             mMainFooter.setVisibility(View.GONE);
         }
 
@@ -348,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                                 if (numInLocal == localStoreEntityList.size()) {
-                                    for(LocalStockEntity item : localFragmentArray) {
+                                    for (LocalStockEntity item : localFragmentArray) {
                                         localFragmentList.add(item);
                                     }
                                     getNetWorth();
@@ -444,12 +447,10 @@ public class MainActivity extends AppCompatActivity {
 //                                Log.d("aaaaa", "current size favo " + numInFavorite);
 
                                 if (numInFavorite == favoriteStoreEntityList.size()) {
-                                    for(LocalStockEntity item : favoriteFragmentArray) {
+                                    for (LocalStockEntity item : favoriteFragmentArray) {
                                         favoriteFragmentList.add(item);
                                     }
                                     setUpRecyclerView();
-                                    enableSwipeToDeleteAndUndoForFavorite();
-                                    enableDragAndDropForPortfolio();
                                     mProgressBar.setVisibility(View.GONE);
                                     mMainFooter.setVisibility(View.VISIBLE);
                                     mScrollBar.setVisibility(View.VISIBLE);
@@ -471,8 +472,6 @@ public class MainActivity extends AppCompatActivity {
 //            Log.d("aaaa", "set vsii");
             if (0 == favoriteStoreEntityList.size()) {
                 setUpRecyclerView();
-                enableSwipeToDeleteAndUndoForFavorite();
-                enableDragAndDropForPortfolio();
                 mProgressBar.setVisibility(View.GONE);
                 mMainFooter.setVisibility(View.VISIBLE);
                 mScrollBar.setVisibility(View.VISIBLE);
@@ -497,6 +496,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewAdapter_portfolio.updateData(localFragmentList);
         mRcPortfolio.setAdapter(recyclerViewAdapter_portfolio);
 
+//        enableSwipeToDeleteAndUndoForFavorite();
+//        enableDragAndDropForPortfolio();
     }
 
 
@@ -546,7 +547,6 @@ public class MainActivity extends AppCompatActivity {
         mRcFavorite.setLayoutManager(mLayoutManager_favorite);
         // add cutting line
         mRcFavorite.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
-
 
 
         mLayoutManager_portfolio = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false) {
