@@ -22,6 +22,8 @@ For the home screen, it include Portfolio section and Favorite section, the stoc
 
 For the details screen, you can see a chart supported by HighCharts API, which shows the price history of the particular item you want to see for multiple choices, like 3 months, 6 months, 1 year, and 2 year. You will also see the Current price, low price, open price, bid price, high price and the volume for today.  Besides that, it also include some news for this company to help users get the newest information, supported by  [NewsAPI](https://newsapi.org/).
 
+
+
 ![image-20201209202449207](C:\Users\ShuoW\AppData\Roaming\Typora\typora-user-images\image-20201209202449207.png)
 
 
