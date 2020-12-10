@@ -4,7 +4,7 @@ For the home screen, it include Portfolio section and Favorite section, the stoc
 
 
 
-![image-20201209202237031](C:\Users\ShuoW\AppData\Roaming\Typora\typora-user-images\image-20201209202237031.png)
+![image-20201209202237031](img-github\image-20201209202237031.png)
 
 
 
